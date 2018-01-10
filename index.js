@@ -3,18 +3,18 @@ import next from 'next';
 import http from 'http';
 import cors from 'cors';
 import morgan from 'morgan';
+import url from 'url';
 import compression from 'compression';
 import bodyParser from 'body-parser';
 import cookieParser from 'cookie-parser';
 import passport from 'passport';
-import nextRoutes from 'next-routes';
 import setupAuth from './api/auth';
+import setupApi from './api';
 
-const routes = nextRoutes();
 const dev = process.env.NODE_ENV !== 'production';
 const port = parseInt(process.env.PORT, 10) || 8000;
 const app = next({ dev, quiet: false });
-const customHandler = routes.getRequestHandler(app);
+const nextRequestHandler = app.getRequestHandler();
 
 app.prepare().then(() => {
   const server = express();
@@ -34,7 +34,7 @@ app.prepare().then(() => {
   );
 
   setupAuth(server, passport);
-  require('./api')(server);
+  setupApi(server);
 
   server.get('/post/:id', (req, res) => {
     const params = { id: req.params.id };
@@ -42,7 +42,8 @@ app.prepare().then(() => {
   });
 
   server.get('*', (req, res) => {
-    return customHandler(req, res);
+    const parsedUrl = url.parse(req.url, true);
+    return nextRequestHandler(req, res, parsedUrl);
   });
 
   server.listen(port, err => {
