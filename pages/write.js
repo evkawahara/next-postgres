@@ -34,15 +34,12 @@ class Write extends React.Component {
         {navigation}
         <ColumnLayout>
           <PostForm
-            style={{ margin: '0 0 48px 0' }}
             title={this.state.title}
             content={this.state.content}
             onTitleChange={this._handleChangeTitle}
             onContentChange={this._handleChangeContent}
           />
-          <Button onClick={this._handleSave}>
-            Publish
-          </Button>
+          <Button onClick={this._handleSave}>Publish</Button>
         </ColumnLayout>
       </Document>
     );

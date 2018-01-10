@@ -10,24 +10,10 @@ class CommentList extends React.Component {
 
   render() {
     const comments = this.props.comments.map(c => (
-      <CommentPreview
-        key={`cmmt-${c.id}`}
-        showResponse={this.props.showResponse}
-        style={{ margin: '0 0 24px 0' }}
-        {...c}
-      />
+      <CommentPreview key={`cmmt-${c.id}`} showResponse={this.props.showResponse} {...c} />
     ));
 
-    return (
-      <div className="container">
-        <style jsx>{`
-          .container {
-            box-sizing: border-box;
-          }
-        `}</style>
-        {comments}
-      </div>
-    );
+    return <div className="container">{comments}</div>;
   }
 }
 

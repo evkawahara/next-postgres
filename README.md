@@ -11,7 +11,6 @@ It is deployed [here](https://next-postgres.herokuapp.com/).
 - [NextJS + Custom Express](https://github.com/zeit/next.js/)
 - [Postgres](https://www.postgresql.org/)
 - [Sequelize: PostgresSQL ORM](http://docs.sequelizejs.com/)
-- [Styled-JSX](https://github.com/zeit/styled-jsx)
 - [Passport for local authentication](http://passportjs.org/)
 - [Heroku](https://www.heroku.com)
 - [Redux](http://redux.js.org/) + [Higher-Order Components](https://facebook.github.io/react/docs/higher-order-components.html)
@@ -43,14 +42,14 @@ I also built a [React Native](https://facebook.github.io/react-native/) applicat
 
 ## Setup: Quick newbies guide to Postgres
 
-- On OSX, to run Postgres: 
+- On OSX, to run Postgres:
 
 ```sh
 pg_ctl -D /usr/local/var/postgres start
 ```
 
 - Postgres config is stored in `./config.js`.
-- Local database: `testdb`. 
+- Local database: `testdb`.
 - Username and password as `test`.
 
 ### First time Postgres instructions.

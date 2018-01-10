@@ -77,8 +77,7 @@ class CommentPreview extends React.Component {
             viewer={viewer}
             isEditable={isReplyEditable}
             isEditing={isEditing}
-            onDelete={() => this._handleDelete(r.id)}
-            style={{ margin: '16px 0 16px 0' }}>
+            onDelete={() => this._handleDelete(r.id)}>
             {r.content}
           </CommentPreviewReply>
         );
@@ -87,39 +86,6 @@ class CommentPreview extends React.Component {
 
     return (
       <div className="container" style={style}>
-        <style jsx>{`
-          .container {
-            margin: 0 auto 0 auto;
-            font-size: 14px;
-            box-sizing: border-box;
-            white-space: pre-wrap;
-            overflow-wrap: break-word;
-          }
-
-          .content {
-            padding: 16px;
-            border-right: 1px solid #2e2f30;
-            border-left: 1px solid #2e2f30;
-            border-bottom: 1px solid #2e2f30;
-          }
-
-          .text {
-            margin-bottom: 48px;
-          }
-
-          .actions {
-            margin: 24px 0 0 0;
-            font-size: 12px;
-          }
-
-          .response {
-            margin-bottom: 16px;
-          }
-
-          .bold {
-            font-weight: 600;
-          }
-        `}</style>
         <CommentPreviewHeader
           viewer={viewer}
           onEdit={this._handleEdit}
@@ -128,69 +94,66 @@ class CommentPreview extends React.Component {
           isEditable={isEditable}
           isEditing={isEditing}
           style={{ background: isEditing ? 'blue' : '#2e2f30' }}>
-          <span className="bold">{this.props.user.username}{' '}</span>
+          <span>{this.props.user.username} </span>
           commented on
-          <span className="bold">
-            {' '}{Strings.toDate(this.props.createdAt)}
-          </span>
+          <span> {Strings.toDate(this.props.createdAt)}</span>
         </CommentPreviewHeader>
         <div className="content">
-          {showResponse
-            ? <blockquote className="response" onClick={this._handleView}>
-                📮 In response to
-                {' '}
-                <span className="title">“{post.title}”</span>
-              </blockquote>
-            : undefined}
+          {showResponse ? (
+            <blockquote onClick={this._handleView}>
+              📮 In response to <span>“{post.title}”</span>
+            </blockquote>
+          ) : (
+            undefined
+          )}
 
-          {!isEditing
-            ? <p className="text">
-                {this.state.content}
-              </p>
-            : <Textarea
-                autoFocus
-                value={this.state.content}
-                fontSize="14px"
-                onChange={this._handleContentChange}
-              />}
+          {!isEditing ? (
+            <p>{this.state.content}</p>
+          ) : (
+            <Textarea
+              autoFocus
+              value={this.state.content}
+              fontSize="14px"
+              onChange={this._handleContentChange}
+            />
+          )}
 
           {maybeReplyElements}
 
-          {isReplying
-            ? <CommentForm
-                autoFocus
-                title={
-                  <span>
-                    Leave a reply to
-                    {' '}
-                    <span className="bold">{this.props.user.username}</span>
-                  </span>
-                }
-                placeholder="Leave a reply..."
-                isReplying={isReplying}
-                onCancel={this._handleCancelReply}
-                postId={postId}
-                commentId={id}
-                style={{ margin: '16px 0 0 0' }}
-              />
-            : undefined}
+          {isReplying ? (
+            <CommentForm
+              autoFocus
+              title={
+                <span>
+                  Leave a reply to <span className="bold">{this.props.user.username}</span>
+                </span>
+              }
+              placeholder="Leave a reply..."
+              isReplying={isReplying}
+              onCancel={this._handleCancelReply}
+              postId={postId}
+              commentId={id}
+            />
+          ) : (
+            undefined
+          )}
 
-          {viewer
-            ? <div className="actions">
-                {!isParent && !isReplying && !isEditing
-                  ? <ButtonText
-                      onClick={this._handleReply}
-                      style={{ margin: '0 16px 0 0' }}>
-                      Reply
-                    </ButtonText>
-                  : undefined}
-                {isEditable && isEditing
-                  ? <ButtonText onClick={this._handleSave}>
-                      Save
-                    </ButtonText>
-                  : undefined}
-              </div>
-            : undefined}
+          {viewer ? (
+            <div>
+              {!isParent && !isReplying && !isEditing ? (
+                <ButtonText onClick={this._handleReply}>Reply</ButtonText>
+              ) : (
+                undefined
+              )}
+              {isEditable && isEditing ? (
+                <ButtonText onClick={this._handleSave}>Save</ButtonText>
+              ) : (
+                undefined
+              )}
+            </div>
+          ) : (
+            undefined
+          )}
         </div>
       </div>
     );

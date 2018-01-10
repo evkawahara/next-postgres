@@ -38,29 +38,6 @@ export default class Input extends React.Component {
   render() {
     return (
       <div className="container">
-        <style jsx>{`
-          .container {
-            width: 100%;
-            position: relative;
-          }
-
-          .input {
-            font-size: 16px;
-            font-weight: 600;
-            padding: 44px 16px 16px 16px;
-            width: 100%;
-            box-sizing: border-box;
-            z-index: 1;
-            color: #24292e;
-            border: 2px solid #24292e;
-            box-shadow: 4px 4px 0 #24292e;
-          }
-
-          .input:focus {
-            border: 2px solid blue;
-            box-shadow: 4px 4px 0 blue;
-          }
-        `}</style>
         <Label>{this.props.label}</Label>
         <input
           ref="input"

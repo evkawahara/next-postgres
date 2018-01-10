@@ -1,17 +1,14 @@
 module.exports = (Sequelize, DataTypes) => {
-  const Post = Sequelize.define(
-    'Post',
-    {
-      title: {
-        type: DataTypes.TEXT,
-        allowNull: false,
-      },
-      content: {
-        type: DataTypes.TEXT,
-        allowNull: true,
-      },
-    }
-  );
+  const Post = Sequelize.define('Post', {
+    title: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    content: {
+      type: DataTypes.TEXT,
+      allowNull: true,
+    },
+  });
 
   Post.associate = models => {
     Post.hasMany(models.Comment, {

@@ -12,21 +12,11 @@ class Nav extends React.Component {
   render() {
     return (
       <NavLayout>
-        <Link className="link" href="/write">
-          Write
-        </Link>
-        <Link className="link" href="/">
-          Posts ({this.props.posts.length})
-        </Link>
-        <Link className="link" href="/comments">
-          Comments ({this.props.comments.length})
-        </Link>
-        <Link className="link" href="/users">
-          Users ({this.props.users.length})
-        </Link>
-        <Link className="link" onClick={this._handleLogout}>
-          Log out
-        </Link>
+        <Link href="/write">Write</Link>
+        <Link href="/">Posts ({this.props.posts.length})</Link>
+        <Link href="/comments">Comments ({this.props.comments.length})</Link>
+        <Link href="/users">Users ({this.props.users.length})</Link>
+        <Link onClick={this._handleLogout}>Log out</Link>
       </NavLayout>
     );
   }

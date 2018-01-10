@@ -37,55 +37,18 @@ class CommentList extends React.Component {
 
   render() {
     return (
-      <div className="container" style={{ margin: '24px 0 0 0' }}>
-        <style jsx>{`
-          .container {
-            margin: 0 auto 0 auto;
-            font-size: 14px;
-            box-sizing: border-box;
-            white-space: pre-wrap;
-            overflow-wrap: break-word;
-          }
-
-          .content {
-            padding: 16px;
-            border-right: 1px solid blue;
-            border-left: 1px solid blue;
-            border-bottom: 1px solid blue;
-          }
-
-          .header {
-            min-height: 44px;
-            background: blue;
-            color: #FFFFFF;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 16px 0 16px;
-          }
-
-          .header-left {
-            min-width: 25%;
-            width: 100%;
-            padding: 8px 0 8px 0;
-          }
-
-          .header-right {
-            padding-left: 16px;
-            flex-shrink: 0;
-          }
-        `}</style>
-        <header className="header">
-          <div className="header-left">
-            {this.props.title}
-          </div>
-          <div className="header-right">
-            {this.props.isReplying
-              ? <DeleteIcon interactionStyle onClick={this.props.onCancel} />
-              : undefined}
+      <div>
+        <header>
+          <div>{this.props.title}</div>
+          <div>
+            {this.props.isReplying ? (
+              <DeleteIcon interactionStyle onClick={this.props.onCancel} />
+            ) : (
+              undefined
+            )}
           </div>
         </header>
-        <div className="content">
+        <div>
           <Textarea
             autoFocus={this.props.autoFocus}
             label="comment"
@@ -93,10 +56,8 @@ class CommentList extends React.Component {
             value={this.state.content}
             onChange={this._handleContentChange}
           />
-          <div className="actions">
-            <ButtonText onClick={this._handleSend}>
-              Submit
-            </ButtonText>
+          <div>
+            <ButtonText onClick={this._handleSend}>Submit</ButtonText>
           </div>
         </div>
       </div>

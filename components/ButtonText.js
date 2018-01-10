@@ -13,24 +13,7 @@ export default class ButtonText extends React.Component {
 
   render() {
     return (
-      <span
-        className="item"
-        style={this.props.style}
-        onClick={this.props.onClick}>
-        <style jsx>{`
-          .item {
-            font-size: 12px;
-            font-weight: 600;
-            color: #0000FF;
-            cursor: pointer;
-            text-decoration: underline;
-            transition: color 200ms ease;
-
-            &:hover {
-              color: #1111AF;
-            }
-          }
-        `}</style>
+      <span className="item" style={this.props.style} onClick={this.props.onClick}>
         {this.props.children}
       </span>
     );

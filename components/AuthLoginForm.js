@@ -21,24 +21,7 @@ class AuthLoginForm extends React.Component {
 
   render() {
     return (
-      <div className="form">
-        <style jsx>{`
-          .spacer {
-            height: 16px;
-            margin: 0;
-            width: 100%;
-            display: block;
-            border: 0;
-          }
-
-          .large-spacer {
-            height: 24px;
-            margin: 0;
-            width: 100%;
-            display: block;
-            border: 0;
-          }
-        `}</style>
+      <div>
         <Input
           label="Username"
           autoFocus
@@ -46,7 +29,7 @@ class AuthLoginForm extends React.Component {
           name="username"
           onChange={this._handleChange}
         />
-        <hr className="spacer" />
+        <hr />
         <Input
           label="Password"
           value={this.state.password}
@@ -55,10 +38,8 @@ class AuthLoginForm extends React.Component {
           onChange={this._handleChange}
           onSubmit={this._handleSubmit}
         />
-        <hr className="large-spacer" />
-        <Button onClick={this._handleSubmit}>
-          Log in
-        </Button>
+        <hr />
+        <Button onClick={this._handleSubmit}>Log in</Button>
       </div>
     );
   }

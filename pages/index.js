@@ -22,90 +22,44 @@ class Index extends React.Component {
     return [
       <NavPublic key="navigation" />,
       <ColumnLayout key="layout">
-        <style jsx>{`
-          .heading {
-            font-size: 2.618rem;
-            line-height: 2.8rem;
-            font-weight: 600;
-          }
-
-          .heading-2 {
-            margin: 2.125rem 0 1rem 0;
-            font-size: 1.618rem;
-            font-weight: 500;
-          }
-
-          .paragraph {
-            margin-top: 1.125rem;
-          }
-
-          .link {
-            color: #0000FF;
-            cursor: pointer;
-            text-decoration: underline;
-            transition: color 200ms ease;
-
-            &:hover {
-              color: #1111AF;
-            }
-          }
-        `}</style>
-
-        <h1 className="heading">
-          next-postgres
-        </h1>
-        <p className="paragraph">
-          This project is an example of React + NextJS + Postgres. It is tailored for those who are enthusiastic about building websites with 100% JavaScript.
-          {' '}<br /><br />
-          <a
-            className="link"
-            target="blank"
-            href="https://github.com/jimmylee/next-postgres">
+        <h1>next-postgres</h1>
+        <p>
+          This project is an example of React + NextJS + Postgres. It is tailored for those who are
+          enthusiastic about building websites with 100% JavaScript. <br />
+          <br />
+          <a target="blank" href="https://github.com/jimmylee/next-postgres">
             View next-postgres on GitHub
           </a>
           .
         </p>
-        <p className="paragraph">
-          If you like writing mobile applications with 100% JavaScript, there is an example powered by
-          {' '}
-          <a className="link" target="blank" href="https://expo.io">
+        <p>
+          If you like writing mobile applications with 100% JavaScript, there is an example powered
+          by{' '}
+          <a target="blank" href="https://expo.io">
             Expo
-          </a>. You can open the <a
-            className="link"
-            target="blank"
-            href="https://expo.io/@jimmylee/expo-next-postgres">
+          </a>. You can open the{' '}
+          <a target="blank" href="https://expo.io/@jimmylee/expo-next-postgres">
             project
-          </a> with Expo Client. {' '}<br /><br />
-          <a
-            className="link"
-            target="blank"
-            href="https://github.com/jimmylee/expo-next-postgres">
+          </a>{' '}
+          with Expo Client. <br />
+          <br />
+          <a target="blank" href="https://github.com/jimmylee/expo-next-postgres">
             View expo-next-postgres on GitHub
           </a>
           .
         </p>
-        <h2 className="heading-2">
-          Log in
-        </h2>
+        <h2>Log in</h2>
         <AuthLoginForm />
-        <h2 className="heading-2">
-          Create an account
-        </h2>
+        <h2>Create an account</h2>
         <AuthSignupForm />
       </ColumnLayout>,
     ];
   };
 
   render() {
-    let subview = !this.props.isAuthenticated
-      ? this.renderLoggedOut()
-      : this.renderLoggedIn();
+    let subview = !this.props.isAuthenticated ? this.renderLoggedOut() : this.renderLoggedIn();
 
-    return (
-      <Document>
-        {subview}
-      </Document>
-    );
+    return <Document>{subview}</Document>;
   }
 }
 

@@ -29,9 +29,7 @@ export default class Textarea extends React.Component {
   componentDidMount() {
     const { scrollHeight } = this.refs.textarea;
     this.setState({
-      height: scrollHeight > this.props.height
-        ? scrollHeight
-        : this.props.height,
+      height: scrollHeight > this.props.height ? scrollHeight : this.props.height,
     });
 
     if (this.props.autoFocus) {
@@ -42,9 +40,7 @@ export default class Textarea extends React.Component {
   _handleChange = e => {
     const { scrollHeight } = this.refs.textarea;
     this.setState({
-      height: scrollHeight > this.props.height
-        ? scrollHeight
-        : this.props.height,
+      height: scrollHeight > this.props.height ? scrollHeight : this.props.height,
     });
 
     this.props.onChange(e);
@@ -59,22 +55,7 @@ export default class Textarea extends React.Component {
     };
 
     return (
-      <div className="container">
-        <style jsx>{`
-          .container {
-            width: 100%;
-            position: relative;
-          }
-
-          .textarea {
-            width: 100%;
-            position: relative;
-            box-sizing: border-box;
-            white-space: pre-wrap;
-            color: #24292e;
-            background: transparent;
-          }
-        `}</style>
+      <div>
         <textarea
           style={style}
           ref="textarea"
