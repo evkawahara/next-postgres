@@ -1,14 +1,8 @@
-import React from 'react';
-import Link from '../components/Link';
-import * as Actions from '../common/actions';
-import { connect } from 'react-redux';
+import styled from 'react-emotion';
 
-export default class NavLayout extends React.Component {
-  render() {
-    return (
-      <nav>
-        <div>{this.props.children}</div>
-      </nav>
-    );
-  }
-}
+export default styled('nav')`
+  max-width: 672px;
+  width: 100%;
+  margin: 0 auto 0 auto;
+  padding: 0 16px 0 16px;
+`;

@@ -1,12 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import styled from 'react-emotion';
 
-export default class Label extends React.Component {
-  static propTypes = {
-    children: PropTypes.node,
-  };
-
-  render() {
-    return <label>{this.props.children}</label>;
-  }
-}
+export default styled('label')`
+  position: absolute;
+  top: 4px;
+  z-index: 1;
+  color: #999999;
+`;

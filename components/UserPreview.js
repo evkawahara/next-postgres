@@ -1,6 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import { connect } from 'react-redux';
-import ButtonText from '../components/ButtonText';
+import Button from '../components/Button';
+import BorderedItem from '../components/BorderedItem';
 import BoxHeaderLayout from '../components/BoxHeaderLayout';
 import * as Strings from '../common/strings';
 import * as Actions from '../common/actions';
@@ -16,18 +17,18 @@ class UserPreview extends React.Component {
     return (
       <div style={this.props.style}>
         <BoxHeaderLayout>
-          <span> {this.props.user.username}</span>
+          <strong>{this.props.user.username}</strong>
         </BoxHeaderLayout>
-        <div>
+        <BorderedItem>
           Joined on {Strings.toDate(this.props.user.createdAt)}
           {isViewer ? (
             <div>
-              <ButtonText onClick={this._handleDelete}>Delete your account</ButtonText>
+              <Button onClick={this._handleDelete}>Delete your account</Button>
             </div>
           ) : (
             undefined
           )}
-        </div>
+        </BorderedItem>
       </div>
     );
   }

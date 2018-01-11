@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import ColumnLayout from '../components/ColumnLayout';
 import Document from '../components/Document';
 import PostForm from '../components/PostForm';
 import Button from '../components/Button';
 import NavPublic from '../components/NavPublic';
-import Nav from '../components/Nav';
+import NavAuthenticated from '../components/NavAuthenticated';
 import withData from '../higher-order/withData';
 import * as Actions from '../common/actions';
 
@@ -27,7 +27,7 @@ class Write extends React.Component {
   };
 
   render() {
-    const navigation = !this.props.isAuthenticated ? <NavPublic /> : <Nav />;
+    const navigation = !this.props.isAuthenticated ? <NavPublic /> : <NavAuthenticated />;
 
     return (
       <Document>

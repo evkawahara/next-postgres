@@ -1,7 +1,8 @@
-import React from 'react';
+import styled from 'react-emotion';
 
-export default class ColumnLayout extends React.Component {
-  render() {
-    return <div>{this.props.children}</div>;
-  }
-}
+export default styled('div')`
+  max-width: 672px;
+  width: 100%;
+  margin: 0 auto 0 auto;
+  padding: 48px 16px 228px 16px;
+`;

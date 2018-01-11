@@ -1,14 +1,16 @@
-import React from 'react';
+import * as React from 'react';
+import Border from '../components/Border';
 import Textarea from '../components/Textarea';
-import ButtonText from '../components/ButtonText';
+import Button from '../components/Button';
 import Document from '../components/Document';
 import CommentPreview from '../components/CommentPreview';
 import ColumnLayout from '../components/ColumnLayout';
 import CommentForm from '../components/CommentForm';
 import PostLockup from '../components/PostLockup';
-import Nav from '../components/Nav';
+import NavAuthenticated from '../components/NavAuthenticated';
 import NavPublic from '../components/NavPublic';
 import withData from '../higher-order/withData';
+import * as Text from '../components/Text';
 import * as Strings from '../common/strings';
 import * as Actions from '../common/actions';
 
@@ -54,7 +56,7 @@ class Post extends React.Component {
   };
 
   render() {
-    const navigation = !this.props.isAuthenticated ? <NavPublic /> : <Nav />;
+    const navigation = !this.props.isAuthenticated ? <NavPublic /> : <NavAuthenticated />;
 
     const { post, viewer } = this.props;
     if (!post) {
@@ -75,7 +77,7 @@ class Post extends React.Component {
       <CommentForm postId={post.id} title="Reply to this post" placeholder="Leave a comment..." />
     ) : (
       <div>
-        To leave a comment, <a href="/">log in or create an account</a>.
+        To leave a comment, <Text.Anchor href="/">log in or create an account</Text.Anchor>.
       </div>
     );
 
@@ -91,14 +93,10 @@ class Post extends React.Component {
         <ColumnLayout>
           {isEditable ? (
             <div>
-              {!isEditing ? (
-                <ButtonText onClick={this._handleEdit}>Edit Post</ButtonText>
-              ) : (
-                undefined
-              )}
-              {isEditing ? <ButtonText onClick={this._handleCancel}>Cancel</ButtonText> : undefined}
-              {isEditing ? <ButtonText onClick={this._handleSave}>Save</ButtonText> : undefined}
-              <ButtonText onClick={this._handleDelete}>Delete</ButtonText>
+              {!isEditing ? <Button onClick={this._handleEdit}>Edit Post</Button> : undefined}
+              {isEditing ? <Button onClick={this._handleCancel}>Cancel</Button> : undefined}
+              {isEditing ? <Button onClick={this._handleSave}>Save</Button> : undefined}
+              <Button onClick={this._handleDelete}>Delete</Button>
             </div>
           ) : (
             undefined
@@ -113,7 +111,7 @@ class Post extends React.Component {
               onChange={this._handleTitleChange}
             />
           ) : (
-            <h1 className="title">{this.state.title}</h1>
+            <Text.Heading1>{this.state.title}</Text.Heading1>
           )}
           <PostLockup
             commentLength={post.comments.length}
@@ -129,8 +127,13 @@ class Post extends React.Component {
           ) : (
             undefined
           )}
-          {!isEditing ? <p>{this.state.content}</p> : undefined}
+          {!isEditing ? (
+            <Text.PostBody style={{ margin: '16px 0 88px 0' }}>{this.state.content}</Text.PostBody>
+          ) : (
+            undefined
+          )}
           {!isEditing ? <div>{maybeCommentElements}</div> : undefined}
+          <Border />
           {!isEditing ? commentForm : undefined}
         </ColumnLayout>
       </Document>

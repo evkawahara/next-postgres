@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import PostPreview from '../components/PostPreview';
 import { connect } from 'react-redux';
 

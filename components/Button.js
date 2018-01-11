@@ -1,20 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import { css } from 'react-emotion';
 
-export default class Button extends React.Component {
-  static propTypes = {
-    onClick: PropTypes.func,
-  };
+const buttonStyle = css`
+  font-size: 12px;
+  font-weight: 600;
+  font-family: Courier, monospace;
+  outline: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
 
-  static defaultProps = {
-    onClick: () => {},
-  };
-
-  render() {
-    return (
-      <button style={this.props.style} onClick={this.props.onClick}>
-        {this.props.children}
-      </button>
-    );
+  &:hover {
+    color: #0000ff;
+    text-decoration: underline;
   }
-}
+
+  &:focus {
+    outline: 0;
+    border: 0;
+  }
+`;
+
+export default props => (
+  <button {...props} className={buttonStyle}>
+    » {props.children}
+  </button>
+);

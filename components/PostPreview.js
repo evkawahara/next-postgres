@@ -1,7 +1,8 @@
-import React from 'react';
-import ButtonText from '../components/ButtonText';
+import * as React from 'react';
+import Button from '../components/Button';
 import PostLockup from '../components/PostLockup';
 import { connect } from 'react-redux';
+import * as Text from '../components/Text';
 import * as Actions from '../common/actions';
 import * as Strings from '../common/strings';
 
@@ -13,19 +14,21 @@ export default class PostPreview extends React.Component {
   render() {
     const { post } = this.props;
     return (
-      <div onClick={() => this._handleViewPost(post.id)}>
-        <h1>{post.title ? post.title : 'untitled'}</h1>
+      <div
+        onClick={() => this._handleViewPost(post.id)}
+        style={{ cursor: 'pointer', marginBottom: '48px' }}>
+        <Text.Heading1>{post.title ? post.title : 'untitled'}</Text.Heading1>
         <PostLockup
           commentLength={post.comments.length}
           createdAt={post.createdAt}
           username={post.user.username}
         />
-        <p>
+        <Text.PostBody style={{ marginTop: 24 }}>
           {Strings.elide(post.content, 256)}
           <br />
           <br />
-          <ButtonText>Read more...</ButtonText>
-        </p>
+          <Button>Read more</Button>
+        </Text.PostBody>
       </div>
     );
   }

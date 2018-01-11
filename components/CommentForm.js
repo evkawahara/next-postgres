@@ -1,12 +1,13 @@
-import React from 'react';
+import * as React from 'react';
 import PropTypes from 'prop-types';
+import Border from '../components/Border';
 import Textarea from '../components/Textarea';
-import ButtonText from '../components/ButtonText';
+import Button from '../components/Button';
 import * as Actions from '../common/actions';
+import * as Text from '../components/Text';
 import { connect } from 'react-redux';
-import { DeleteIcon } from '../common/svg';
 
-class CommentList extends React.Component {
+class CommentForm extends React.Component {
   static defaultProps = {
     postId: PropTypes.string,
     commentId: PropTypes.string,
@@ -38,11 +39,11 @@ class CommentList extends React.Component {
   render() {
     return (
       <div>
-        <header>
-          <div>{this.props.title}</div>
+        <header style={{ margin: '16px 0 16px 0' }}>
+          <Text.PageTitle>{this.props.title}</Text.PageTitle>
           <div>
             {this.props.isReplying ? (
-              <DeleteIcon interactionStyle onClick={this.props.onCancel} />
+              <Button onClick={this.props.onCancel}>Cancel</Button>
             ) : (
               undefined
             )}
@@ -54,10 +55,11 @@ class CommentList extends React.Component {
             label="comment"
             placeholder={this.props.placeholder}
             value={this.state.content}
+            fontSize="16px"
             onChange={this._handleContentChange}
           />
           <div>
-            <ButtonText onClick={this._handleSend}>Submit</ButtonText>
+            <Button onClick={this._handleSend}>Submit</Button>
           </div>
         </div>
       </div>
@@ -65,4 +67,4 @@ class CommentList extends React.Component {
   }
 }
 
-export default connect(state => state)(CommentList);
+export default connect(state => state)(CommentForm);

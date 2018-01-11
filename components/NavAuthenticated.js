@@ -23,25 +23,32 @@ const linkStyles = css`
   }
 `;
 
-class NavPublic extends React.Component {
+class Nav extends React.Component {
+  _handleLogout = () => {
+    this.props.dispatch(Actions.requestLogout());
+  };
+
   render() {
     return (
       <NavLayout>
-        <Link className={linkStyles} href="/" style={{ marginRight: '16px' }}>
-          » Sign in
+        <Link className={linkStyles} href="/write" style={{ marginRight: '16px' }}>
+          » Write
         </Link>
-        <Link className={linkStyles} href="/posts" style={{ marginRight: '16px' }}>
+        <Link className={linkStyles} href="/" style={{ marginRight: '16px' }}>
           » Posts ({this.props.posts.length})
         </Link>
         <Link className={linkStyles} href="/comments" style={{ marginRight: '16px' }}>
           » Comments ({this.props.comments.length})
         </Link>
-        <Link className={linkStyles} href="/users">
+        <Link className={linkStyles} href="/users" style={{ marginRight: '16px' }}>
           » Users ({this.props.users.length})
+        </Link>
+        <Link className={linkStyles} onClick={this._handleLogout}>
+          » Log out
         </Link>
       </NavLayout>
     );
   }
 }
 
-export default connect(state => state)(NavPublic);
+export default connect(state => state)(Nav);

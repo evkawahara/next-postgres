@@ -1,17 +1,18 @@
-import React from 'react';
+import * as React from 'react';
 import Document from '../components/Document';
 import ColumnLayout from '../components/ColumnLayout';
 import AuthLoginForm from '../components/AuthLoginForm';
 import AuthSignupForm from '../components/AuthSignupForm';
 import NavPublic from '../components/NavPublic';
 import PostList from '../components/PostList';
-import Nav from '../components/Nav';
+import NavAuthenticated from '../components/NavAuthenticated';
+import * as Text from '../components/Text';
 import withData from '../higher-order/withData';
 
 class Index extends React.Component {
   renderLoggedIn = () => {
     return [
-      <Nav key="navigation" />,
+      <NavAuthenticated key="navigation" />,
       <ColumnLayout key="layout">
         <PostList posts={this.props.posts} />
       </ColumnLayout>,
@@ -22,36 +23,42 @@ class Index extends React.Component {
     return [
       <NavPublic key="navigation" />,
       <ColumnLayout key="layout">
-        <h1>next-postgres</h1>
-        <p>
+        <Text.PageTitle>next-postgres</Text.PageTitle>
+        <Text.Paragraph>
           This project is an example of React + NextJS + Postgres. It is tailored for those who are
-          enthusiastic about building websites with 100% JavaScript. <br />
+          enthusiastic about building websites with 100% JavaScript. It is designed in a way that
+          makes you want to change it. <br />
           <br />
-          <a target="blank" href="https://github.com/jimmylee/next-postgres">
+          <Text.Anchor
+            target="blank"
+            href="https://github.com/jimmylee/next-postgres"
+            style={{ marginBottom: '20px', display: 'block' }}>
             View next-postgres on GitHub
-          </a>
-          .
-        </p>
-        <p>
+          </Text.Anchor>
+        </Text.Paragraph>
+        <Text.Paragraph>
           If you like writing mobile applications with 100% JavaScript, there is an example powered
           by{' '}
-          <a target="blank" href="https://expo.io">
+          <Text.Anchor target="blank" href="https://expo.io">
+            {' '}
             Expo
-          </a>. You can open the{' '}
-          <a target="blank" href="https://expo.io/@jimmylee/expo-next-postgres">
-            project
-          </a>{' '}
-          with Expo Client. <br />
+          </Text.Anchor>. You can open the{' '}
+          <Text.Anchor target="blank" href="https://expo.io/@jimmylee/expo-next-postgres">
+            Expo Project
+          </Text.Anchor>{' '}
+          with <Text.Anchor href="https://expo.io/tools#client">Expo Client</Text.Anchor>. <br />
           <br />
-          <a target="blank" href="https://github.com/jimmylee/expo-next-postgres">
+          <Text.Anchor
+            target="blank"
+            href="https://github.com/jimmylee/expo-next-postgres"
+            style={{ marginBottom: '20px', display: 'block' }}>
             View expo-next-postgres on GitHub
-          </a>
-          .
-        </p>
-        <h2>Log in</h2>
-        <AuthLoginForm />
-        <h2>Create an account</h2>
-        <AuthSignupForm />
+          </Text.Anchor>
+        </Text.Paragraph>
+        <Text.PageTitle>Log in</Text.PageTitle>
+        <AuthLoginForm style={{ marginBottom: 24 }} />
+        <Text.PageTitle>Create an account</Text.PageTitle>
+        <AuthSignupForm style={{ marginBottom: 24 }} />
       </ColumnLayout>,
     ];
   };

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Provider, connect } from 'react-redux';
 import { initStore } from '../common/store';
 import * as HTTP from '../common/http';
@@ -51,15 +51,10 @@ const initializeReduxStore = (ctx, initialState) => {
   return window[storeKey];
 };
 
-const composeComponentWithData = (
-  options,
-  mapStateToProps
-) => ComposedComponent => {
-  const connectedComponent = connect.apply(null, [mapStateToProps])(
-    ComposedComponent
-  );
+const composeComponentWithData = (options, mapStateToProps) => ComposedComponent => {
+  const connectedComponent = connect.apply(null, [mapStateToProps])(ComposedComponent);
 
-  return class WithDataHigherOrder extends Component {
+  return class WithDataHigherOrder extends React.Component {
     static async getInitialProps(ctx) {
       let initialState = { ...options.state };
 
@@ -82,9 +77,7 @@ const composeComponentWithData = (
       const { initialState, initialProps, store } = this.props;
 
       const hasStore = store && store.dispatch && store.getState;
-      const providerStore = hasStore
-        ? this.props.store
-        : initializeReduxStore({}, initialState);
+      const providerStore = hasStore ? this.props.store : initializeReduxStore({}, initialState);
 
       const mergedProps = {};
 

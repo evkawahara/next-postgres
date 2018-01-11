@@ -1,6 +1,6 @@
-import React from 'react';
+import * as React from 'react';
+import Button from '../components/Button';
 import BoxHeaderLayout from '../components/BoxHeaderLayout';
-import { EditIcon, DeleteIcon, CommentIcon } from '../common/svg';
 
 export default class CommentPreviewHeader extends React.Component {
   render() {
@@ -8,17 +8,23 @@ export default class CommentPreviewHeader extends React.Component {
 
     const rightElements = [
       viewer && isEditable && !isEditing && onEdit ? (
-        <EditIcon key="edit" interactionStyle onClick={this.props.onEdit} />
+        <Button key="edit" onClick={this.props.onEdit} style={{ marginRight: 8 }}>
+          Edit
+        </Button>
       ) : (
         undefined
       ),
       viewer && isEditable && isEditing && onCancel ? (
-        <EditIcon key="cancel" interactionStyle onClick={this.props.onCancel} />
+        <Button key="cancel" onClick={this.props.onCancel} style={{ marginRight: 8 }}>
+          Cancel
+        </Button>
       ) : (
         undefined
       ),
       viewer && isEditable && !isEditing && this.props.onDelete ? (
-        <DeleteIcon key="delete" interactionStyle onClick={onDelete} />
+        <Button key="delete" onClick={onDelete}>
+          Delete
+        </Button>
       ) : (
         undefined
       ),

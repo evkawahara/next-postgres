@@ -1,7 +1,8 @@
 import Head from 'next/head';
-import React from 'react';
+import * as React from 'react';
+import withEmotion from '../higher-order/withEmotion';
 
-export default class Document extends React.Component {
+class Document extends React.Component {
   static defaultProps = {
     title: 'Next-postgres',
     description:
@@ -27,3 +28,5 @@ export default class Document extends React.Component {
     );
   }
 }
+
+export default withEmotion()(Document);

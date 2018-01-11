@@ -1,6 +1,7 @@
-import React from 'react';
+import * as React from 'react';
 import Input from '../components/Input';
 import Button from '../components/Button';
+import Border from '../components/Border';
 import * as Actions from '../common/actions';
 import { connect } from 'react-redux';
 
@@ -21,14 +22,14 @@ class AuthSignupForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div style={this.props.style}>
         <Input
           label="Username"
           value={this.state.username}
           name="username"
           onChange={this._handleChange}
         />
-        <hr />
+        <Border />
         <Input
           label="Password"
           value={this.state.password}
@@ -36,7 +37,7 @@ class AuthSignupForm extends React.Component {
           type="password"
           onChange={this._handleChange}
         />
-        <hr />
+        <Border />
         <Input
           label="Verify your password"
           value={this.state.verify}
@@ -45,8 +46,10 @@ class AuthSignupForm extends React.Component {
           onChange={this._handleChange}
           onSubmit={this._handleSubmit}
         />
-        <hr />
-        <Button onClick={this._handleSubmit}>Sign up</Button>
+        <Border />
+        <Button onClick={this._handleSubmit} style={{ marginTop: 16 }}>
+          Sign up
+        </Button>
       </div>
     );
   }

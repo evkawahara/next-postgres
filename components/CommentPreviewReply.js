@@ -1,21 +1,29 @@
-import React from 'react';
+import * as React from 'react';
 import CommentPreviewHeader from '../components/CommentPreviewHeader';
+import LabelBold from '../components/LabelBold';
+import * as Text from '../components/Text';
 import * as Strings from '../common/strings';
+import styled from 'react-emotion';
+
+const CommentReplyContainer = styled('div')`
+  border-left: 1px dashed #ececec;
+  padding-left: 16px;
+`;
 
 export default class CommentPreviewReply extends React.Component {
   render() {
     return (
-      <div>
+      <CommentReplyContainer>
         <CommentPreviewHeader
           isEditing={this.props.isEditing}
           isEditable={this.props.isEditable}
           onDelete={this.props.onDelete}
           viewer={this.props.viewer}>
-          <span>{this.props.username} </span>commented on
-          <span> {Strings.toDate(this.props.createdAt)}</span>
+          <LabelBold>{this.props.username} </LabelBold>commented on
+          <LabelBold> {Strings.toDate(this.props.createdAt)}</LabelBold>
         </CommentPreviewHeader>
-        <div>{this.props.children}</div>
-      </div>
+        <Text.PostBody style={{ margin: '16px 0 16px 0' }}>{this.props.children}</Text.PostBody>
+      </CommentReplyContainer>
     );
   }
 }

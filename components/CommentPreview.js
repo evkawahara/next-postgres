@@ -1,13 +1,20 @@
-import React from 'react';
+import * as React from 'react';
 import Button from '../components/Button';
-import ButtonText from '../components/ButtonText';
+import LabelBold from '../components/LabelBold';
+import BorderedItem from '../components/BorderedItem';
 import Textarea from '../components/Textarea';
 import CommentPreviewHeader from '../components/CommentPreviewHeader';
 import CommentPreviewReply from '../components/CommentPreviewReply';
 import CommentForm from '../components/CommentForm';
 import { connect } from 'react-redux';
+import styled, { css } from 'react-emotion';
+import * as Text from '../components/Text';
 import * as Actions from '../common/actions';
 import * as Strings from '../common/strings';
+
+const CommentReplyForm = styled('div')`
+  padding: 0 0 0 16px;
+`;
 
 class CommentPreview extends React.Component {
   state = {
@@ -84,31 +91,34 @@ class CommentPreview extends React.Component {
       });
     }
 
+    const CommentPreviewContainer = css`
+      margin: 0 0 48px 0;
+    `;
+
     return (
-      <div className="container" style={style}>
+      <div className={CommentPreviewContainer} style={style}>
         <CommentPreviewHeader
           viewer={viewer}
           onEdit={this._handleEdit}
           onCancel={this._handleCancel}
           onDelete={() => this._handleDelete(id)}
           isEditable={isEditable}
-          isEditing={isEditing}
-          style={{ background: isEditing ? 'blue' : '#2e2f30' }}>
-          <span>{this.props.user.username} </span>
+          isEditing={isEditing}>
+          <LabelBold>{this.props.user.username} </LabelBold>
           commented on
-          <span> {Strings.toDate(this.props.createdAt)}</span>
+          <LabelBold> {Strings.toDate(this.props.createdAt)}</LabelBold>
         </CommentPreviewHeader>
         <div className="content">
           {showResponse ? (
-            <blockquote onClick={this._handleView}>
-              📮 In response to <span>“{post.title}”</span>
-            </blockquote>
+            <BorderedItem onClick={this._handleView}>
+              In response to <LabelBold>“{post.title}”</LabelBold>
+            </BorderedItem>
           ) : (
             undefined
           )}
 
           {!isEditing ? (
-            <p>{this.state.content}</p>
+            <Text.PostBody style={{ margin: '16px 0 16px 0' }}>{this.state.content}</Text.PostBody>
           ) : (
             <Textarea
               autoFocus
@@ -121,19 +131,21 @@ class CommentPreview extends React.Component {
           {maybeReplyElements}
 
           {isReplying ? (
-            <CommentForm
-              autoFocus
-              title={
-                <span>
-                  Leave a reply to <span className="bold">{this.props.user.username}</span>
-                </span>
-              }
-              placeholder="Leave a reply..."
-              isReplying={isReplying}
-              onCancel={this._handleCancelReply}
-              postId={postId}
-              commentId={id}
-            />
+            <CommentReplyForm>
+              <CommentForm
+                autoFocus
+                title={
+                  <span>
+                    Leave a reply to <LabelBold>{this.props.user.username}</LabelBold>
+                  </span>
+                }
+                placeholder="Leave a reply..."
+                isReplying={isReplying}
+                onCancel={this._handleCancelReply}
+                postId={postId}
+                commentId={id}
+              />
+            </CommentReplyForm>
           ) : (
             undefined
           )}
@@ -141,12 +153,12 @@ class CommentPreview extends React.Component {
           {viewer ? (
             <div>
               {!isParent && !isReplying && !isEditing ? (
-                <ButtonText onClick={this._handleReply}>Reply</ButtonText>
+                <Button onClick={this._handleReply}>Reply</Button>
               ) : (
                 undefined
               )}
               {isEditable && isEditing ? (
-                <ButtonText onClick={this._handleSave}>Save</ButtonText>
+                <Button onClick={this._handleSave}>Save</Button>
               ) : (
                 undefined
               )}
