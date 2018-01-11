@@ -4,19 +4,18 @@ This is a example of a forum web application with posts, comments and server sid
 
 It is deployed [here](https://next-postgres.herokuapp.com/).
 
-![screen shot 2017-07-31 at 1 13 27 am](https://user-images.githubusercontent.com/310223/28768733-a04035e4-758d-11e7-889f-513859de2f77.png)
-
-**Library breakdown**
+**Stack**
 
 - [NextJS + Custom Express](https://github.com/zeit/next.js/)
+- [Emotion CSS-in-JS](https://github.com/emotion-js/emotion)
 - [Postgres](https://www.postgresql.org/)
 - [Sequelize: PostgresSQL ORM](http://docs.sequelizejs.com/)
 - [Passport for local authentication](http://passportjs.org/)
 - [Heroku](https://www.heroku.com)
-- [Redux](http://redux.js.org/) + [Higher-Order Components](https://facebook.github.io/react/docs/higher-order-components.html)
+- [Redux](http://redux.js.org/)
 - [Babel](https://babeljs.io/)
 
-🐨 This code is for you to take! My only hope is that it is helpful. Below are deploy steps where you can deploy your own to [Heroku](https://www.heroku.com).
+This code is for you to take!
 
 **Why is this useful?**
 
@@ -27,9 +26,9 @@ It is deployed [here](https://next-postgres.herokuapp.com/).
 
 **Mobile apps with JavaScript**
 
-I also built a [React Native](https://facebook.github.io/react-native/) application with [Expo](https://expo.io) that sends network requests to a [deployed version of this application](https://next-postgres.herokuapp.com/). Below are steps to deploy your own).
+I also built a [React Native](https://facebook.github.io/react-native/) application with [Expo](https://expo.io) that sends network requests to a [deployed version](https://next-postgres.herokuapp.com/).
 
-- Open it with [Expo Client](https://expo.io/@jimmylee/expo-next-postgres).
+- Open it [the project on Expo](https://expo.io/@jimmylee/expo-next-postgres).
 - Get [Expo Client](https://expo.io/tools) if you need it.
 - View and take the [source code](https://github.com/jimmylee/expo-next-postgres) on GitHub.
 
