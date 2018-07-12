@@ -8,7 +8,7 @@ const requestHeaders = {
 const ENV = process.env.NODE_ENV || 'development';
 const SERVER_PATH = ENV === 'development'
   ? 'http://localhost:8000'
-  : 'https://next-postgres.herokuapp.com';
+  : 'https://thawing-thicket-14158.herokuapp.com';
 
 export const getAllComments = () => {
   const options = {
