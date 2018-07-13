@@ -128,6 +128,8 @@ export const savePost = ({ content, title }) => {
     body: JSON.stringify({ content, title }),
   };
 
+  console.log(JSON.stringify({ content, title }));
+
   return fetch(`${SERVER_PATH}/api/posts`, options);
 };
 
@@ -175,4 +177,20 @@ export const signup = ({ username, password, verify }) => {
   };
 
   return fetch(`${SERVER_PATH}/api/signup`, options);
+};
+
+export const updateRating = ratingData => {
+  let ratingData2 = {"content": ratingData, "title": "yp"};
+    const options = {
+        method: 'POST',
+        credentials: 'include',
+        headers: requestHeaders,
+        body: JSON.stringify(ratingData2),
+    };
+    console.log(ratingData);
+
+    return fetch(`${SERVER_PATH}/api/posts`, options);
+
+
+  //return fetch(`${SERVER_PATH}/api/comments`, options);
 };

@@ -229,4 +229,96 @@ module.exports = {
       };
     },
   },
+  rating: {
+    list: ({ req, User, Post, Comment }) => {
+      return {
+        include: [
+          {
+            model: Comment,
+            as: 'comments',
+            include: [
+              {
+                model: User,
+                as: 'user',
+                attributes: {
+                  exclude: ['salt', 'password'],
+                },
+              },
+              {
+                model: Post,
+                as: 'post',
+              },
+              {
+                model: Comment,
+                as: 'replies',
+                include: [
+                  {
+                    model: User,
+                    as: 'user',
+                    attributes: {
+                      exclude: ['salt', 'password'],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            model: User,
+            as: 'user',
+            attributes: {
+              exclude: ['salt', 'password'],
+            },
+          },
+        ],
+        order: [['createdAt', 'DESC']],
+      };
+    },
+    get: ({ req, User, Post, Comment }) => {
+      return {
+        include: [
+          {
+            model: Comment,
+            as: 'comments',
+            where: {
+              commentId: null,
+            },
+            include: [
+              {
+                model: User,
+                as: 'user',
+                attributes: {
+                  exclude: ['salt', 'password'],
+                },
+              },
+              {
+                model: Post,
+                as: 'post',
+              },
+              {
+                model: Comment,
+                as: 'replies',
+                include: [
+                  {
+                    model: User,
+                    as: 'user',
+                    attributes: {
+                      exclude: ['salt', 'password'],
+                    },
+                  },
+                ],
+              },
+            ],
+          },
+          {
+            model: User,
+            as: 'user',
+            attributes: {
+              exclude: ['salt', 'password'],
+            },
+          },
+        ],
+      };
+    },
+  },
 };

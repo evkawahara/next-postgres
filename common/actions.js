@@ -168,3 +168,17 @@ export const requestSignup = data => {
     return redirect('/');
   };
 };
+
+export const requestUpdateRating = data => {
+  console.log("EVAN")
+  console.log(data)
+    return async dispatch => {
+        const response = await HTTP.updateRating(data);
+
+        if (response.status !== 200) {
+            return exception('error');
+        }
+
+        window.location.reload();
+    };
+};

@@ -1,5 +1,6 @@
 import user from './controllers/user';
 import post from './controllers/post';
+import rating from './controllers/rating'
 import comment from './controllers/comment';
 import passport from 'passport';
 
@@ -49,7 +50,7 @@ module.exports = app => {
   app.delete('/api/posts/:postId', authMiddleware, post.delete);
 
   app.get('/api/comments', comment.list);
-  app.post('/api/comments', authMiddleware, comment.create);
+  app.post('/api/comments', authMiddleware, rating.create);
   app.get('/api/posts/:postId/comments', comment.getAll);
   app.get('/api/posts/:postId/comments/:commentId', comment.get);
   app.put(
