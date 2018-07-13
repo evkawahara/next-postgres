@@ -30,15 +30,10 @@ class NavPublic extends React.Component {
         <Link className={linkStyles} href="/" style={{ marginRight: '16px' }}>
           » Sign in
         </Link>
-        <Link className={linkStyles} href="/posts" style={{ marginRight: '16px' }}>
-          » Posts ({this.props.posts.length})
-        </Link>
         <Link className={linkStyles} href="/comments" style={{ marginRight: '16px' }}>
-          » Comments ({this.props.comments.length})
+          » Tech Matrix
         </Link>
-        <Link className={linkStyles} href="/users">
-          » Users ({this.props.users.length})
-        </Link>
+
       </NavLayout>
     );
   }

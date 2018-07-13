@@ -44,7 +44,7 @@ export default () => ComposedComponent => {
     }
 
     render() {
-      injectGlobalStyles();
+      //injectGlobalStyles();
 
       return <ComposedComponent {...this.props} />;
     }

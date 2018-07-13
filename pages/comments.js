@@ -37,8 +37,21 @@ class Snowflake extends SnowflakeApp {
   render() {
     var finalPost = undefined;
 
-    console.log("EVAN this.props");
-    console.log(this.props);
+    let navigation = !this.props.isAuthenticated ? <NavPublic /> : <NavAuthenticated />;
+
+    if(!this.props.isAuthenticated) {
+      return (
+
+          <Document>
+            {navigation}
+            <div>
+              <br />
+              <br />
+              <h1 style={{textAlign: 'center'}}>Please sign in first!</h1>
+            </div>
+          </Document>
+      );
+    }
 
     if (this.props.posts) {
       const listOfPosts = this.props.posts.filter(p => p.userId == this.props.viewer.id);
@@ -54,7 +67,6 @@ class Snowflake extends SnowflakeApp {
 
     }
 
-    let navigation = !this.props.isAuthenticated ? <NavPublic /> : <NavAuthenticated />;
     return (
 
         <Document>

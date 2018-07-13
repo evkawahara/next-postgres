@@ -81,9 +81,9 @@ const defaultState = (): SnowflakeAppState => {
     name: 'Enter Name',
     title: 'Staff Engineer',
     milestoneByTrack: {
-      'MOBILE': 1,
-      'WEB_CLIENT': 1,
-      'FOUNDATIONS': 1,
+      'MOBILE': 0,
+      'WEB_CLIENT': 0,
+      'FOUNDATIONS': 0,
       'SERVERS': 0,
       'PROJECT_MANAGEMENT': 0,
       'COMMUNICATION': 0,
@@ -107,9 +107,9 @@ const defaultState2 = (): SnowflakeAppState => {
     name: 'Enter Name',
     title: 'Staff Engineer',
     milestoneByTrack: {
-      'MOBILE': 5,
-      'WEB_CLIENT': 5,
-      'FOUNDATIONS': 5,
+      'MOBILE': 0,
+      'WEB_CLIENT': 0,
+      'FOUNDATIONS': 0,
       'SERVERS': 0,
       'PROJECT_MANAGEMENT': 0,
       'COMMUNICATION': 0,
@@ -242,17 +242,6 @@ class SnowflakeApp extends React.Component<Props, SnowflakeAppState> {
             milestoneByTrack={this.state.milestoneByTrack}
             trackId={this.state.focusedTrackId}
             handleTrackMilestoneChangeFn={(track, milestone) => this.handleTrackMilestoneChange(track, milestone)} />
-        <div style={{display: 'flex', paddingBottom: '20px'}}>
-          <div style={{flex: 1}}>
-            <a href="#" onClick={() => this.setState(emptyState())}>Reset</a>
-          </div>
-          <div style={{flex: 5}}>
-            Made with ❤️ by <a href="https://medium.engineering" target="_blank">Medium Eng</a>.
-            Learn about the <a href="https://medium.com/s/engineering-growth-framework" target="_blank">growth framework</a>.
-            Get the <a href="https://github.com/Medium/snowflake" target="_blank">source code</a>.
-            Read the <a href="https://medium.com/p/85e078bc15b7" target="_blank">terms of service</a>.
-          </div>
-        </div>
       </main>
     )
   }

@@ -31,19 +31,10 @@ class Nav extends React.Component {
   render() {
     return (
       <NavLayout>
-        <Link className={linkStyles} href="/write" style={{ marginRight: '16px' }}>
-          » Write
-        </Link>
-        <Link className={linkStyles} href="/" style={{ marginRight: '16px' }}>
-          » Posts ({this.props.posts.length})
-        </Link>
         <Link className={linkStyles} href="/comments" style={{ marginRight: '16px' }}>
-          » Comments ({this.props.comments.length})
+          » Tech Matrix
         </Link>
-        <Link className={linkStyles} href="/users" style={{ marginRight: '16px' }}>
-          » Users ({this.props.users.length})
-        </Link>
-        <Link className={linkStyles} onClick={this._handleLogout}>
+        <Link className={linkStyles} onClick={this._handleLogout} style={{ marginRight: '16px' }}>
           » Log out
         </Link>
       </NavLayout>

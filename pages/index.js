@@ -8,6 +8,7 @@ import PostList from '../components/PostList';
 import NavAuthenticated from '../components/NavAuthenticated';
 import * as Text from '../components/Text';
 import withData from '../higher-order/withData';
+import { Row, Column } from 'react-foundation';
 
 class Index extends React.Component {
   renderLoggedIn = () => {
@@ -23,42 +24,45 @@ class Index extends React.Component {
     return [
       <NavPublic key="navigation" />,
       <ColumnLayout key="layout">
-        <Text.PageTitle>next-postgres</Text.PageTitle>
+        <Text.PageTitle style={{textAlign: 'center', fontSize: '28px' }}><h1>E.A.T.</h1></Text.PageTitle>
+        <Text.Paragraph style={{textAlign: 'center', fontSize: '20px' }}>
+          <b>E</b>ngineering <b>A</b>nalysis <b>T</b>ool
+        </Text.Paragraph>
+        <Text.Paragraph style={{textAlign: 'center'}}>
+          This tool is built to allow users to interact with and submit a technical skills analysis <br />
+        </Text.Paragraph>
         <Text.Paragraph>
-          This project is an example of React + NextJS + Postgres. It is tailored for those who are
-          enthusiastic about building websites with 100% JavaScript. It is designed in a way that
-          makes you want to change it. <br />
-          <br />
+          <h2>What does a technical skills analysis provide? </h2>
+          1. A skills analysis helps establish a detailed assessment of individual employee’s capabilities. <br />
+          2. A summary of the team’s capabilities - identify gaps or weaknesses. <br />
+          3. A clear definition of how skills are rated to guide employee development.
+        </Text.Paragraph>
+        <div style={{display: 'flex'}}>
+          <div style={{flex: "1 1 auto"}}>
+            <Text.PageTitle>Log in</Text.PageTitle>
+            <AuthLoginForm style={{ marginBottom: 24 }} />
+          </div>
+          <div style={{flex: "1 1 auto"}}>
+            <Text.PageTitle>Create an account</Text.PageTitle>
+            <AuthSignupForm style={{ marginBottom: 24 }} />
+          </div>
+        </div>
+
+
+        <Text.Paragraph>
+          <h2>Accreditation</h2>
+          This tool is built upon the next-postgres framework.
           <Text.Anchor
-            target="blank"
-            href="https://github.com/jimmylee/next-postgres"
-            style={{ marginBottom: '20px', display: 'block' }}>
+              target="blank"
+              href="https://github.com/jimmylee/next-postgres"
+          >
             View next-postgres on GitHub
-          </Text.Anchor>
+          </Text.Anchor>. The framework uses React + NextJS in combination with a Postgres DB.<br />
+          The tool also makes use of <a href="https://medium.engineering" target="_blank">Medium's</a> Engineering Growth Framework. .
+          Learn about the <a href="https://medium.com/s/engineering-growth-framework" target="_blank">growth framework</a>.
+          Get the <a href="https://github.com/Medium/snowflake" target="_blank">source code</a>.
+          Read the <a href="https://medium.com/p/85e078bc15b7" target="_blank">terms of service</a>.
         </Text.Paragraph>
-        <Text.Paragraph>
-          If you like writing mobile applications with 100% JavaScript, there is an example powered
-          by{' '}
-          <Text.Anchor target="blank" href="https://expo.io">
-            {' '}
-            Expo
-          </Text.Anchor>. You can open the{' '}
-          <Text.Anchor target="blank" href="https://expo.io/@jimmylee/expo-next-postgres">
-            Expo Project
-          </Text.Anchor>{' '}
-          with <Text.Anchor href="https://expo.io/tools#client">Expo Client</Text.Anchor>. <br />
-          <br />
-          <Text.Anchor
-            target="blank"
-            href="https://github.com/jimmylee/expo-next-postgres"
-            style={{ marginBottom: '20px', display: 'block' }}>
-            View expo-next-postgres on GitHub
-          </Text.Anchor>
-        </Text.Paragraph>
-        <Text.PageTitle>Log in</Text.PageTitle>
-        <AuthLoginForm style={{ marginBottom: 24 }} />
-        <Text.PageTitle>Create an account</Text.PageTitle>
-        <AuthSignupForm style={{ marginBottom: 24 }} />
       </ColumnLayout>,
     ];
   };
